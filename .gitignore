@@ -1,0 +1,4 @@
+# Ignore production config files
+
+*.yml
+!*.sample.yml

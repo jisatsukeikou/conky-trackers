@@ -1,0 +1,23 @@
+# Global config
+config:
+  base_url: https://redmine.example.com/
+  content_type: json
+  api_key: apikey
+
+# Tracker requests
+tracker:
+  issues:
+    path: issues
+    out_model: issues
+    params:
+      assigned_to_id: me
+      # status_id: 1
+      limit: 10
+      sort: "updated_on:desc"
+
+  time:
+    path: time_entries
+    out_model: time_entries
+    params:
+      user_id: me
+      limit: 10
