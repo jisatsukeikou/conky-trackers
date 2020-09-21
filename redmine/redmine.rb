@@ -8,7 +8,7 @@ API_PATH = "redmine_api.yml"
 TZ_OFFSET = "+03:00"
 
 module RedmineClient
-    @@api = Psych.load File.read(API_PATH), symbolize_names: true
+    @@api = Psych.load File.read(File.expand_path(API_PATH, File.dirname(__FILE__))), symbolize_names: true
     @@config = @@api[:config]
     @@tracker = @@api[:tracker]
 
@@ -32,7 +32,8 @@ module RedmineClient
     end
 
     def self.get_path(path, params = {})
-        json = @@site["#{path}.#{@@config[:content_type]}"].get @@headers.merge({params: params})
+        json = @@site["#{path}.#{@@config[:content_type]}"]
+          .get @@headers.merge({params: params})
         JSON.parse json, symbolize_names: true
     end
 

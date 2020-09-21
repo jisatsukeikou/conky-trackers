@@ -1,6 +1,7 @@
 config:
   base_url: https://gitlab.example.com/api/v4
   api_token: apitoken
+  limit: 20
 
 projects:
   sample/sample-project
